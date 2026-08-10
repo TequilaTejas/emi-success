@@ -160,17 +160,28 @@
   .drow .arr{color:var(--ink-3);font-weight:500}
   .drow .same{color:var(--ink-3);font-weight:500}
 
-  .scn{position:absolute;top:66px;right:24px;z-index:55;display:flex;gap:6px}
+  .scn{
+    position:fixed;left:calc(50% + 220px);top:50%;transform:translateY(-50%);
+    display:flex;flex-direction:column;gap:5px;z-index:99;
+    background:rgba(255,255,255,.72);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    padding:8px;border-radius:20px;
+    box-shadow:0 8px 24px rgba(25,24,23,.14), inset 0 0 0 1px rgba(25,24,23,.05);
+  }
+  .scn-label{
+    font-size:10px;font-weight:650;color:var(--ink-3);
+    text-transform:uppercase;letter-spacing:.7px;
+    padding:2px 8px 3px;text-align:center;
+  }
   .scn button{
     border:none;cursor:pointer;font-family:inherit;
-    font-size:11px;font-weight:650;color:#fff;
-    background:rgba(255,255,255,.16);
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);
-    padding:5px 10px;border-radius:99px;
-    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    font-size:12.5px;font-weight:600;color:var(--ink-2);
+    background:transparent;
+    padding:8px 16px;border-radius:99px;
     transition:background .2s,color .2s;
   }
-  .scn button.on{background:#fff;color:var(--green-ink)}
+  .scn button.on{background:var(--ink);color:#fff}
+  @media (max-width:520px){.scn{display:none}}
 
   .mo.adv .oval{
     background:#fff;color:var(--green-ink);padding-bottom:16px;
@@ -521,12 +532,6 @@
       </span>
     </div>
 
-    <div class="scn" role="group" aria-label="Prepayment amount scenario">
-      <button data-s="small">₹5k</button>
-      <button data-s="one" class="on">₹12.5k</button>
-      <button data-s="big">₹40k</button>
-    </div>
-
     <div class="aurora" aria-hidden="true"></div>
 
     <div class="scroll" id="scroll">
@@ -625,6 +630,13 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
   </div>
+</div>
+
+<div class="scn" role="group" aria-label="Prepayment amount scenario">
+  <span class="scn-label">Prepay amount</span>
+  <button data-s="small">₹5k</button>
+  <button data-s="one" class="on">₹12.5k</button>
+  <button data-s="big">₹40k</button>
 </div>
 
 <nav class="states">
